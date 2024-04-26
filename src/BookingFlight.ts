@@ -1,3 +1,8 @@
+import { Airport } from "./Airport";
+import { Meal } from "./Meal";
+import { Passenger } from "./Passenger";
+import { Seat } from "./Seat";
+
 class BookingFlight {
     private departureAirport: Airport;
     private arrivalAirport: Airport;
