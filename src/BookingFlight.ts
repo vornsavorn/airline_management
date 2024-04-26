@@ -62,6 +62,6 @@ class BookingFlight {
     }
 
     removePassenger(passenger: Passenger): void {
-        this.passengers = this.passengers.filter(p => p !== passenger);
+        this.passengers.splice(this.passengers.indexOf(passenger), 1);
     }
 }
