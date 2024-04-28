@@ -1,19 +1,20 @@
-import { Ticket } from "./Ticket";
 import { Passenger } from "./Passenger";
 import { Flight } from "./Flight";
 import { BookingTrip } from "./BookingTrip";
 import { Airport } from "./Airport";
+import { Ticket } from "./Ticket";
 
 export class ReturnTicket extends Ticket {
-   
+    private returnDate: Date;
+
     constructor(
         id: number,
         bookingTrips: BookingTrip[],
         departureAirports: Airport,
         arrivalAirports: Airport,
         flights: Flight[],
-        passenger: Passenger,
-        private returnDate: Date
+        passenger: Passenger[],
+        returnDate: Date
     ) {
         super(
             id,
@@ -34,5 +35,3 @@ export class ReturnTicket extends Ticket {
         this.returnDate = returnDate;
     }
 }
-
-

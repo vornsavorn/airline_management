@@ -1,37 +1,53 @@
-import { Airport } from "./Airport";
-import { BookingTrip } from "./BookingTrip";
-import { Flight } from "./Flight";
 import { Passenger } from "./Passenger";
+import { Flight } from "./Flight";
+import { BookingTrip } from "./BookingTrip";
+import { Airport } from "./Airport";
 
-export class Ticket  {
+export class Ticket {
+    protected id: number;
     protected bookingTrips: BookingTrip[];
+    protected departureAirports: Airport;
+    protected arrivalAirports: Airport;
     protected flights: Flight[];
-    protected departureAirports: Airport | undefined;
-    protected arrivalAirports: Airport | undefined;
-    protected passenger: Passenger[];
+    protected passengers: Passenger[];
 
-    constructor(protected id: number) {
+    constructor(
+        id: number,
+        bookingTrips: BookingTrip[],
+        departureAirports: Airport,
+        arrivalAirports: Airport,
+        flights: Flight[],
+        passenger: Passenger[]
+    ) {
         this.id = id;
-        this.bookingTrips = [];
-        this.flights = [];
-        this.arrivalAirports = [];
-        this.departureAirports = [];
-        this.passenger = [];
+        this.bookingTrips = bookingTrips;
+        this.departureAirports = departureAirports;
+        this.arrivalAirports = arrivalAirports;
+        this.flights = flights;
+        this.passengers = passenger;
     }
 
-    addBookingTrip(bookingTrip: BookingTrip): void {
-        this.bookingTrips.push(bookingTrip);
+    getId(): number {
+        return this.id;
     }
-                                                                                                                                                                                                                                                            
-    addFlight(flight: Flight): void {
+
+    addBookingTrips(BookingTrip: BookingTrip): void {
+        this.bookingTrips.push(BookingTrip);
+    }
+
+    getDepartureAirports(): Airport {
+        return this.departureAirports;
+    }
+
+    getArrivalAirports(): Airport {
+        return this.arrivalAirports;
+    }
+
+    addFlights(flight: Flight): void {
         this.flights.push(flight);
     }
 
-    setDepartureAirport(departureAirport: Airport): void {
-        this.departureAirports = departureAirport;
-    }
-
-    setArrivalAirport(arrivalAirport: Airport): void {
-        this.arrivalAirports = arrivalAirport
+    addPassenger(passenger: Passenger): void {
+        this.passengers.push(passenger);
     }
 }
