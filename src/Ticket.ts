@@ -22,7 +22,7 @@ export class Ticket {
     addBookingTrip(bookingTrip: BookingTrip): void {
         this.bookingTrips.push(bookingTrip);
     }
-
+                                                                                                                                                                                                                                                            
     addFlight(flight: Flight): void {
         this.flights.push(flight);
     }
