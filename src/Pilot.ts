@@ -1,13 +1,28 @@
-import { Flight } from "./Flight";
+import { Employee } from "./Employee";
 
-class AirlinePilot {
+export class AirlinePilot extends Employee {
     constructor(
-        private id: number,
-        private name: string,
-        private flights: Flight[]
-    ){
-        this.id = id;
-        this.name = name;
-        this.flights = flights;
+        id: string,
+        name: string,
+        age: number,
+        role: string[],
+        salary: number
+    ) {
+        super(id, name, age, role, salary);
+    }
+    getId(): string { 
+        return this.id; 
+    }
+    getName(): string {
+        return this.name;
+    }
+    getAge(): number {
+        return this.age;
+    }
+    getRole(): string[] {
+        return this.role;
+    }
+    getSalary(): number {
+        return this.salary;
     }
 }
