@@ -1,5 +1,5 @@
 export class Employee {
-    constructor(private id: string, private name: string, private age: number, private role: string[], private salary: number) {
+    constructor(protected id: string, protected name: string, protected age: number, protected role: string[], protected salary: number) {
         this.id = id;
         this.name = name;
         this.age = age;
