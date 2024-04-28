@@ -1,8 +1,12 @@
 import { Employee } from "./Employee";
 
 export class CrewMember extends Employee {
-    constructor(protected id : string,protected name: string, 
-    protected age: number, protected role: string[],protected salary: number){
+    constructor(
+        id : string,
+        name: string, 
+        age: number,
+        role: string[],
+        salary: number){
         super(id,name,age,role,salary);
         this.id = id;
         this.name = name;
