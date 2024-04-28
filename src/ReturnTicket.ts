@@ -1,19 +1,38 @@
+import { Ticket } from "./Ticket";
+import { Passenger } from "./Passenger";
 import { Flight } from "./Flight";
 import { BookingTrip } from "./BookingTrip";
-import { BookingFlight } from "./BookingFlight";
 import { Airport } from "./Airport";
-import { Passenger } from "./Passenger";
 
-export class ReturnTicket {
-    
-    constructor (private id : number, private bookingTrip: BookingTrip[],private BookingFlight : BookingFlight[],
-        private flight: Flight[], private departureAirport: Airport[], private arrivalAirport: Airport[], private passenger: Passenger[]) {
-            this.id = id;
-            this.bookingTrip = [];
-            this.BookingFlight = [];
-            this.flight = flight;
-            this.departureAirport = [];
-            this.arrivalAirport = [];
-            this.passenger = [];
+export class ReturnTicket extends Ticket {
+   
+    constructor(
+        id: number,
+        bookingTrips: BookingTrip[],
+        departureAirports: Airport,
+        arrivalAirports: Airport,
+        flights: Flight[],
+        passenger: Passenger,
+        private returnDate: Date
+    ) {
+        super(
+            id,
+            bookingTrips,
+            departureAirports,
+            arrivalAirports,
+            flights,
+            passenger
+        );
+        this.returnDate = returnDate;
+    }
+
+    getReturnDate(): Date {
+        return this.returnDate;
+    }
+
+    setReturnDate(returnDate: Date): void {
+        this.returnDate = returnDate;
     }
 }
+
+
