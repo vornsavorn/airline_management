@@ -1,6 +1,6 @@
 import { Flight } from "./Flight";
 
-class AirlinePilot {
+export class AirlinePilot {
     constructor(
         private id: number,
         private name: string,

@@ -1,6 +1,8 @@
+import { Route } from "./Route";
+
 export class Flight {
     private routes: Route[] = [];
-    private polit: AirlinePilot
+    private polit: 
     constructor (
         private flightId: string,
         private flightName: string,
