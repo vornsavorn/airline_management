@@ -4,7 +4,7 @@ import { Meal } from "./Meal";
 import { Passenger } from "./Passenger";
 import { Seat } from "./Seat";
 
-class BookingFlight {
+export class BookingFlight {
     private departureAirport: Airport;
     private arrivalAirport: Airport;
     private passengers: Passenger[] = [];
