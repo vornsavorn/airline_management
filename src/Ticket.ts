@@ -3,14 +3,14 @@ import { BookingTrip } from "./BookingTrip";
 import { Flight } from "./Flight";
 import { Passenger } from "./Passenger";
 
-export class Ticket {
-    private bookingTrips: BookingTrip[] = [];
-    private flights: Flight[] = [];
-    private departureAirports: Airport | undefined;
-    private arrivalAirports: Airport | undefined;
-    private passenger: Passenger[];
+export class Ticket  {
+    protected bookingTrips: BookingTrip[];
+    protected flights: Flight[];
+    protected departureAirports: Airport | undefined;
+    protected arrivalAirports: Airport | undefined;
+    protected passenger: Passenger[];
 
-    constructor(private id: number) {
+    constructor(protected id: number) {
         this.id = id;
         this.bookingTrips = [];
         this.flights = [];
