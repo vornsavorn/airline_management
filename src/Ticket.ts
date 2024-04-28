@@ -3,7 +3,7 @@ import { BookingTrip } from "./BookingTrip";
 import { Flight } from "./Flight";
 import { Passenger } from "./Passenger";
 
-export class Ticket {
+export class Ticket  {
     protected bookingTrips: BookingTrip[];
     protected flights: Flight[];
     protected departureAirports: Airport | undefined;
