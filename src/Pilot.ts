@@ -1,7 +1,11 @@
 import { Flight } from "./Flight";
 
-export class Pilot {
-    constructor(private id: string, private name: string, private role: string, private age: number, private salary: number, private flights: Flight[]){
+export class AirlinePilot {
+    constructor(
+        private id: number,
+        private name: string,
+        private flights: Flight[]
+    ){
         this.id = id;
         this.name = name;
         this.role = role;
