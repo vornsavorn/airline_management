@@ -1,22 +1,21 @@
 import { Meal } from "../Booking/Meal";
 import { Seat } from "../Plane/Seat";
+import { Gender } from "./Gender";
+import { Person } from "./Person";
 
 
-export class Passenger {
+export class Passenger extends Person {
+
     private mealReferences: Meal[];
     private seatNames: Seat[];
 
     constructor(
-        private name: string,
         private frequentFlyerNumber: string,
-        private passportNumber: string
+        private passportNumber: string, id: string, firstName: string, lastName: string, gender: Gender
     ) {
+        super(id, firstName, lastName, gender);
         this.seatNames = [];
         this.mealReferences = [];
-    }
-
-    getName(): string {
-        return this.name;
     }
 
     getSeatNames(): Seat[] {

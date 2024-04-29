@@ -1,31 +1,22 @@
 import { Employee } from "./Employee";
+import { Gender } from "./Gender";
+import { Person } from "./Person";
 
-export class CrewMember extends Employee {
-    constructor(protected id : string,protected name: string, 
-    protected age: number, protected role: string[],protected salary: number){
-        super(id,name,age,role,salary);
+export class CrewMember extends Person {
+    constructor(
+        id: string,
+        firstName: string,
+        lastName: string,
+        gender: Gender
+    ){
+        super(id, firstName, lastName, gender);
         this.id = id;
-        this.name = name;
-        this.role = role;
-        this.age = age;
-        this.salary = salary;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
     }
     getId():string{
         return this.id;
     }
-    getName(): string {
-        return this.name;
-    }
-
-    getAge(): number {
-        return this.age;
-    }
-
-    getRole(): string[] {
-        return this.role;
-    }
-
-    getSalary(): number {
-        return this.salary;
-    }
+    
 }
