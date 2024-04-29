@@ -1,7 +1,7 @@
-import { Passenger } from "./Passenger";
-import { Flight } from "./Flight";
+import { Airport } from "../Airport/Airport";
+import { Flight } from "../Flight/Flight";
+import { Passenger } from "../Person/Passenger";
 import { BookingTrip } from "./BookingTrip";
-import { Airport } from "./Airport";
 import { Ticket } from "./Ticket";
 
 export class ReturnTicket extends Ticket {

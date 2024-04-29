@@ -1,5 +1,6 @@
 import { Airport } from "./Airport";
 
+
 export class Route {
     private origin : Airport;
     private destination : Airport;

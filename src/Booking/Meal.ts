@@ -1,9 +1,19 @@
 import { BookingFlight } from "./BookingFlight";
 
-export class Meal {
+export enum MealType {
+    VEGENTARIAN = 'VEGENTARIAN',
+    VEGAN = 'VEGAM',
+    HALAL = 'HALAL',
+    KOSHER = 'KOSHER'
+}
 
+export class Meal {
     private bookingFlights: BookingFlight[];
-    constructor(private mealType: string[], private quantity: number, private price: number) {
+    constructor(
+        private mealType: MealType, 
+        private quantity: number, 
+        private price: number
+    ) {
         this.mealType = mealType;
         this.quantity = quantity;
         this.price = price;
@@ -14,7 +24,7 @@ export class Meal {
         this.bookingFlights.push(bookingFlight);
     }
 
-    getMealType(): string[] {
+    getMealType(): MealType {
         return this.mealType;
     }
 

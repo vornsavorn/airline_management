@@ -1,5 +1,6 @@
-import { Meal } from "./Meal";
-import { Seat } from "./Seat";
+import { Meal } from "../Booking/Meal";
+import { Seat } from "../Plane/Seat";
+
 
 export class Passenger {
     private mealReferences: Meal[];

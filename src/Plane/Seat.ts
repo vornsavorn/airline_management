@@ -1,4 +1,4 @@
-import { BookingFlight } from "./BookingFlight";
+import { BookingFlight } from "../Booking/BookingFlight";
 
 export class Seat {
     private bookingFlights : BookingFlight[];

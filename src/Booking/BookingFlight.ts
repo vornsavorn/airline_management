@@ -1,8 +1,9 @@
-import { Airport } from "./Airport";
 import { Baggage } from "./Baggage";
 import { Meal } from "./Meal";
-import { Passenger } from "./Passenger";
-import { Seat } from "./Seat";
+import { Passenger } from "../Person/Passenger";
+import { Airport } from "../Airport/Airport";
+import { Seat } from "../Plane/Seat";
+
 
 export class BookingFlight {
     private departureAirport: Airport;
@@ -61,7 +62,11 @@ export class BookingFlight {
         this.passengers.push(passenger);
     }
 
-    removePassenger(passenger: Passenger): void {
-        this.passengers.splice(this.passengers.indexOf(passenger), 1);
+    setAMealFromBookingFlight(meal: Meal) {
+        this.meals.push(meal);
+    }
+
+    getMealsFromBookingFlight(): Meal[] {
+        return this.meals;
     }
 }

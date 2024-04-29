@@ -1,5 +1,5 @@
-import { Flight } from "./Flight";
-import { Passenger } from "./Passenger";
+import { Flight } from "../Flight/Flight";
+import { Passenger } from "../Person/Passenger";
 
 export class Baggage {
     private flights: Flight[];
