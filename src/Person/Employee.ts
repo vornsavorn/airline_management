@@ -1,5 +1,11 @@
 export class Employee {
-    constructor(protected id: string, protected name: string, protected age: number, protected role: string[], protected salary: number) {
+    constructor(
+        protected id: string, 
+        protected name: string, 
+        protected age: number, 
+        protected role: string[], 
+        protected salary: number
+    ) {
         this.id = id;
         this.name = name;
         this.age = age;
