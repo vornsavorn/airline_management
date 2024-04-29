@@ -5,6 +5,9 @@ import { BookingFlight } from "../Booking/BookingFlight";
 import { Gate } from "../Airport/Gate";
 
 export class Flight {
+    getFlightNumber() {
+        throw new Error("Method not implemented.");
+    }
     private bookingFlight: BookingFlight[] = [];
     private routes: Route;
     private gates: Gate[] = [];
