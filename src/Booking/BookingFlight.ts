@@ -6,8 +6,8 @@ import { Seat } from "../Plane/Seat";
 
 
 export class BookingFlight {
-    private departureAirport: Airport;
-    private arrivalAirport: Airport;
+    private departureAirport: Airport | undefined;
+    private arrivalAirport: Airport | undefined;
     private passengers: Passenger[] = [];
     private baggage: Baggage[] = [];
     private meals: Meal[] = [];
@@ -42,7 +42,7 @@ export class BookingFlight {
         this.arrivalTime = arrivalTime;
     }
 
-    getDepartureAirport(): Airport {
+    getDepartureAirport(): Airport | undefined {
         return this.departureAirport;
     }
 
@@ -50,7 +50,7 @@ export class BookingFlight {
         this.departureAirport = departureAirport;
     }
 
-    getArrivalAirport(): Airport {
+    getArrivalAirport(): Airport | undefined {
         return this.arrivalAirport;
     }
 
