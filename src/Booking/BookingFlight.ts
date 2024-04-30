@@ -3,6 +3,7 @@ import { Meal } from "./Meal";
 import { Passenger } from "../Person/Passenger";
 import { Airport } from "../Airport/Airport";
 import { Seat } from "../Plane/Seat";
+import { Chef } from "../Person/Chef";
 
 
 export class BookingFlight {
@@ -12,17 +13,20 @@ export class BookingFlight {
     private baggage: Baggage[] = [];
     private meals: Meal[] = [];
     private seats: Seat[] = [];
+    private chefs: Chef | undefined;
+
     constructor(
-        private flightNumber: number,
+        private flightNumber: string,
         private departureTime: Date,
         private arrivalTime: Date
     ) {
         this.flightNumber = flightNumber;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
+        
     }
-    
-    getFlightNumber(): number {
+
+    getFlightNumber(): string {
         return this.flightNumber;
     }
 
@@ -62,7 +66,7 @@ export class BookingFlight {
         this.passengers.push(passenger);
     }
 
-    setAMealFromBookingFlight(meal: Meal) {
+    setAMealFromBookingFlight(meal: Meal): void {
         this.meals.push(meal);
     }
 

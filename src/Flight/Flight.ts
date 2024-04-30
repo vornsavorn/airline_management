@@ -10,6 +10,8 @@ export class Flight {
     private gates: Gate[] = [];
     private pilot: AirlinePilot | undefined;
     private tickets: Ticket[] = [];
+    getMeals: any;
+    addMeal: any;
 
     constructor(
         private flightId: string,

@@ -1,13 +1,8 @@
 import { BookingFlight } from "./BookingFlight";
-
-export enum MealType {
-    VEGENTARIAN = 'VEGENTARIAN',
-    VEGAN = 'VEGAM',
-    HALAL = 'HALAL',
-    KOSHER = 'KOSHER'
-}
+import { MealType } from "./MealType";
 
 export class Meal {
+   
     private bookingFlights: BookingFlight[];
     constructor(
         private mealType: MealType, 

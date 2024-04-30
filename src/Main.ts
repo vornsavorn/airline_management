@@ -3,8 +3,11 @@ import { Airport } from "./Airport/Airport";
 import { Gate } from "./Airport/Gate";
 import { Route } from "./Airport/Route";
 import { BookingFlight } from "./Booking/BookingFlight";
-import { Meal, MealType } from "./Booking/Meal";
+import { Meal} from "./Booking/Meal";
+import { MealType } from "./Booking/MealType";
+import { Ticket } from "./Booking/Ticket";
 import { Flight } from "./Flight/Flight";
+import { Chef } from "./Person/Chef";
 import { Employee } from "./Person/Employee";
 import { Gender } from "./Person/Gender";
 import { Passenger } from "./Person/Passenger";
@@ -28,7 +31,7 @@ let givenDate = new Date('2024-04-30');
 
 // Output
 let numberOfFlights = pilot.getFlightsForDate(givenDate);
-// console.log(`On ${givenDate.toDateString()}, you have ${numberOfFlights} flights to join.`);
+console.log(`On ${givenDate.toDateString()}, you have ${numberOfFlights} flights to join.`);
 
 
 // User story 5
@@ -47,5 +50,26 @@ airline.addEmployee(employee4);
 
 // Output
 let totalSalary = airline.getSalary();
-// console.log(`The total salary paid to all employees of ${airline.getName()} is: $${totalSalary}`);
+console.log(`The total salary paid to all employees of ${airline.getName()} is: $${totalSalary}`);
 
+
+// User story 4 
+// As an airline chef, I need to know, for a given flight, how many of each meal type I need to prepare.
+let chef = new Chef("123", "John", "Doe", Gender.MALE);
+
+let bookingFlight = new BookingFlight("ABC123", new Date(), new Date());
+
+let meal1 = new Meal(MealType.VEGETARIAN, 2, 1000);
+let meal2 = new Meal(MealType.SNACK, 1, 1300);
+let meal3 = new Meal(MealType.TEA, 3, 1000);
+
+chef.addFlight(bookingFlight);
+
+bookingFlight.setAMealFromBookingFlight(meal1);
+bookingFlight.setAMealFromBookingFlight(meal2);
+bookingFlight.setAMealFromBookingFlight(meal3);
+
+let uniqueMealTypes = chef.getMealTypesFromBookingFlight();
+
+console.log("meal type for the chef need to prepare:");
+console.log(uniqueMealTypes);
