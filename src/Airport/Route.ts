@@ -2,30 +2,30 @@ import { Airport } from "./Airport";
 
 
 export class Route {
-    private origin : Airport;
-    private destination : Airport;
+    private origin: Airport | undefined;
+    private destination: Airport | undefined;
     constructor(
         private departureTime: Date,
         private arrivalTime: Date,
         private duration: string
-    ){
-       this.departureTime = departureTime;
-       this.arrivalTime = arrivalTime;
-       this.duration = duration;
+    ) {
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.duration = duration;
     }
-    public getOrigin() : Airport {
+    getOrigin(): Airport | undefined {
         return this.origin;
     }
-    public getDestination() : Airport {
+    getDestination(): Airport | undefined {
         return this.destination;
     }
-    public getDepartureTime() : Date {
+    getDepartureTime(): Date {
         return this.departureTime;
     }
-    public getArrivalTime() : Date {
+    getArrivalTime(): Date {
         return this.arrivalTime;
     }
-    public getDuration() : string {
+    getDuration(): string {
         return this.duration;
     }
 
