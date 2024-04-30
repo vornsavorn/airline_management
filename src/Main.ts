@@ -10,8 +10,8 @@ import { Flight } from "./Flight/Flight";
 import { Chef } from "./Person/Chef";
 import { Employee } from "./Person/Employee";
 import { Gender } from "./Person/Gender";
-import { Gate } from "./Airport/Gate";
 import { Passenger } from "./Person/Passenger";
+import { AirlinePilot } from "./Person/Pilot";
 
 
 

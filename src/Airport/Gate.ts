@@ -31,11 +31,7 @@ export class Gate {
     setStatus(status: string): void {
         this.status = status;
     }
-<<<<<<< HEAD
     getAirport(): Airport | undefined {
-=======
-    getAirport(): Airport | undefined{
->>>>>>> fcd9a7b5f227069137f0d79089d17d93661324f9
         return this.airport;
     }
     setAirport(airport: Airport): void {
