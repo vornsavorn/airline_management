@@ -2,28 +2,38 @@ import { Meal } from "../Booking/Meal";
 import { Seat } from "../Plane/Seat";
 import { Gender } from "./Gender";
 import { Person } from "./Person";
+import { Gate } from "../Airport/Gate";
 
 
 export class Passenger extends Person {
 
     private mealReferences: Meal[];
-    private seatNames: Seat[];
+    private seatNumber: Seat[];
+    private gate : Gate | undefined;
 
     constructor(
         private frequentFlyerNumber: string,
         private passportNumber: string, id: string, firstName: string, lastName: string, gender: Gender
     ) {
         super(id, firstName, lastName, gender);
-        this.seatNames = [];
+        this.seatNumber = [];
         this.mealReferences = [];
     }
+    addGate(gate: Gate){
+        this.gate = gate;
+    }
+    
 
-    getSeatNames(): Seat[] {
-        return this.seatNames;
+    getGate(): Gate | undefined{
+        return this.gate;
     }
 
-    addSeatName(seatName: Seat): void {
-        this.seatNames.push(seatName);
+    getSeatNumber(): Seat[] {
+        return this.seatNumber;
+    }
+
+    addSeatNumber(seatNumber: Seat): void {
+        this.seatNumber.push(seatNumber);
     }
 
     addMealReference(mealReference: Meal): void {

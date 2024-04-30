@@ -1,7 +1,7 @@
 import { Airport } from "./Airport";
 
 export class Gate {
-    private airport: Airport;
+    private airport: Airport | undefined;
     constructor (
         private gateCode: string,
         private getNumber: number,
@@ -31,7 +31,7 @@ export class Gate {
     setStatus(status: string): void {
         this.status = status;
     }
-    getAirport(): Airport {
+    getAirport(): Airport | undefined {
         return this.airport;
     }
     setAirport(airport: Airport): void {
@@ -39,3 +39,5 @@ export class Gate {
     }
     
 }
+
+
