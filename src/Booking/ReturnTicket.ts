@@ -5,6 +5,12 @@ import { BookingTrip } from "./BookingTrip";
 import { Ticket } from "./Ticket";
 
 export class ReturnTicket extends Ticket {
+    setArrivalAirport(arrivalAirport: Airport) {
+        throw new Error("Method not implemented.");
+    }
+    setDepartureAirport(departureAirport: Airport) {
+        throw new Error("Method not implemented.");
+    }
     private returnDate: Date;
 
     constructor(
