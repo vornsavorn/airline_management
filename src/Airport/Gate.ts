@@ -31,7 +31,7 @@ export class Gate {
     setStatus(status: string): void {
         this.status = status;
     }
-    getAirport(): Airport | undefined{
+    getAirport(): Airport | undefined {
         return this.airport;
     }
     setAirport(airport: Airport): void {
@@ -39,3 +39,5 @@ export class Gate {
     }
     
 }
+
+

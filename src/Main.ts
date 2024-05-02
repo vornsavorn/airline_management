@@ -16,6 +16,7 @@ import { AirlinePilot } from "./Person/Pilot";
 
 
 
+
 // User story 3
 // As an airline pilot, I want to know, for a given date, how many flights I have to join.
 // let pilot = new AirlinePilot("PF1", "John", "Doe", Gender.MALE, 5000);
@@ -40,10 +41,32 @@ import { AirlinePilot } from "./Person/Pilot";
 // // As an airline manager, I want to find out how much salary I pay all my employees. |||
 // let airline = new Airline("C8 Airline");
 
-// let employee1 = new Employee("EY1", "Theun", "En", Gender.MALE, 5000);
-// let employee2 = new Employee("EY2", "Savorn", "Vorn", Gender.FEMALE, 6000);
-// let employee3 = new Employee("EY3", "Thary", "Oeun", Gender.FEMALE, 5500);
-// let employee4 = new Employee("EY4", "Layhour", "Met", Gender.MALE, 7000);
+// Create Gate that passenger waiting to get on the plane
+let gate1 = new Gate("AA4", 1, "terminal 1", "Open");
+let gate2 = new Gate("BB5", 2, "terminal 2", "Open");
+let gate3 = new Gate("CC8", 3, "terminal 3", "Open");
+let gate4 = new Gate("DD9", 4, "terminal 4", "Open");
+
+// Create passenger 
+let passenger1 = new Passenger("012","A-passport","A01","hor","lay", Gender.FEMALE);
+let passenger2 = new Passenger("010","B-passport","F104","Both","Yan", Gender.FEMALE);
+passenger1.addGate(gate1);
+passenger2.addGate(gate3);
+console.log(passenger1);
+
+let passengerGate = passenger1.getGate();
+if (passengerGate) {
+    let gateCode = passengerGate.getGateCode();
+    console.log(`So the passenger is waiting at gateCode: ${gateCode}.`);
+} else {
+    console.log("Your plane's gate has not been assigned yet.");
+}
+
+// Create employees and add them to the airline
+let employee1 = new Employee("EY1", "Theun", "En", Gender.MALE, 5000);
+let employee2 = new Employee("EY2", "Savorn", "Vorn", Gender.FEMALE, 6000);
+let employee3 = new Employee("EY3", "Thary", "Oeun", Gender.FEMALE, 5500);
+let employee4 = new Employee("EY4", "Layhor", "Met", Gender.MALE, 7000);
 
 // airline.addEmployee(employee1);
 // airline.addEmployee(employee2);
@@ -79,20 +102,6 @@ import { AirlinePilot } from "./Person/Pilot";
 
 //user story 2
 //As an airline manager, I want to know for a given flight, how many passengers have return tickets. 
-let departureAirport = new Airport("JFK", "John F. Kennedy International Airport");
-let arrivalAirport = new Airport("LAX", "Los Angeles International Airport");
-let flight = new Flight("F123", "Flight 1", 200, new Date("2024-05-01T10:00:00"), new Date("2024-05-01T14:00:00"));
 
-let passenger = new Passenger("FF123", "ABCD1234", "P123", "John", "Doe", Gender.MALE);
-// passenger.addFlight(airline);
 
-let returnTicket = new ReturnTicket(123, [], departureAirport, arrivalAirport, [], [], new Date("2024-05-01"));
-returnTicket.setReturnDate(new Date('2024-05-01'));
-// returnTicket.addBookingFlight(flight);
 
-// Logging example data
-console.log("Example Departure Airport:", departureAirport);
-console.log("Example Arrival Airport:", arrivalAirport);
-console.log("Example Flight:", flight);
-console.log("Example Passenger:", passenger);
-console.log("Example Return Date:", returnTicket.getReturnDate());
