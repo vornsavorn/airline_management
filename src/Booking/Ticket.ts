@@ -10,6 +10,7 @@ export class Ticket {
     protected arrivalAirports: Airport;
     protected flights: Flight[];
     protected passengers: Passenger[];
+    
 
     constructor(
         id: number,

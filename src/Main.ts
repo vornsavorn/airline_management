@@ -3,8 +3,7 @@ import { Airport } from "./Airport/Airport";
 import { Gate } from "./Airport/Gate";
 import { Route } from "./Airport/Route";
 import { BookingFlight } from "./Booking/BookingFlight";
-import { ReturnTicket } from "./Booking/ReturnTicket";
-import { Meal} from "./Booking/Meal";
+import { Meal } from "./Booking/Meal";
 import { MealType } from "./Booking/MealType";
 import { Ticket } from "./Booking/Ticket";
 import { Flight } from "./Flight/Flight";
@@ -13,9 +12,25 @@ import { Employee } from "./Person/Employee";
 import { Gender } from "./Person/Gender";
 import { Passenger } from "./Person/Passenger";
 import { AirlinePilot } from "./Person/Pilot";
+import { BookingTrip } from "./Booking/BookingTrip";
+import { ReturnTicket } from "./Booking/ReturnTicket";
 
 
+// User story create 2
+// As an airline manager, I want to know for a given flight, how many passengers have return Ticket.
+let bookingTrip = new BookingTrip();
 
+let flight101 = new BookingFlight('ABC123', new Date(), new Date());
+let passenger001 = new Passenger("012", "A-passport", ReturnTicket.NOT_RETURN, "A01", "hor", "lay", Gender.FEMALE);
+let passenger002 = new Passenger("010", "B-passport", ReturnTicket.RETURN, "F104", "Both", "Yan", Gender.FEMALE);
+flight101.addPassenger(passenger002);
+
+bookingTrip.addBookingFlight(flight101);
+
+let flightNumber = 'ABC123';
+let passengersReturnTicketsCount = bookingTrip.getPassengersReturnTickets(flightNumber);
+
+console.log(`Number of passengers with return tickets for flight ${flightNumber}: ${passengersReturnTicketsCount}`);
 
 // User story 3
 // As an airline pilot, I want to know, for a given date, how many flights I have to join.
@@ -47,11 +62,12 @@ let gate3 = new Gate("CC8", 3, "terminal 3", "Open");
 let gate4 = new Gate("DD9", 4, "terminal 4", "Open");
 
 // Create passenger 
-let passenger1 = new Passenger("012","A-passport","A01","hor","lay", Gender.FEMALE);
-let passenger2 = new Passenger("010","B-passport","F104","Both","Yan", Gender.FEMALE);
+let passenger1 = new Passenger("012", "A-passport", ReturnTicket.RETURN, "A01", "hor", "lay", Gender.FEMALE);
+let passenger2 = new Passenger("010", "B-passport", ReturnTicket.RETURN, "F104", "Both", "Yan", Gender.FEMALE);
+
 passenger1.addGate(gate1);
 passenger2.addGate(gate3);
-console.log(passenger1);
+// console.log(passenger1);
 
 let passengerGate = passenger1.getGate();
 if (passengerGate) {
@@ -86,7 +102,7 @@ let bookingFlight = new BookingFlight("ABC123", new Date(), new Date());
 let meal1 = new Meal(MealType.VEGETARIAN, 2, 1000);
 let meal2 = new Meal(MealType.SNACK, 1, 1300);
 let meal3 = new Meal(MealType.TEA, 3, 1000);
- 
+
 chef.addFlight(bookingFlight);
 
 bookingFlight.setAMealFromBookingFlight(meal1);
@@ -99,7 +115,7 @@ console.log("meal type for the chef need to prepare:");
 console.log(uniqueMealTypes);
 
 
-// User story create 
+// User story create 1
 // As an airline manager, I want to know for a given flight, how many employee working on airline
 let airline001 = new Airline("ABC123");
 
@@ -113,5 +129,20 @@ airline001.addEmployee(employee03);
 
 let employeeCount = airline001.getEmployeeCount();
 console.log(`Number of employees for ${airline001.getName()}: ${employeeCount} employees`);
+
+// User story create 2
+// As an airline manager, I want to know for a given flight, how many passenger bookingFlight
+let bookingFlight07 = new BookingFlight('FL123', new Date(), new Date());
+
+let passenger01 = new Passenger("012", "A-passport", ReturnTicket.RETURN, "A01", "hor", "lay", Gender.FEMALE);
+let passenger02 = new Passenger("010", "B-passport", ReturnTicket.RETURN, "F104", "Both", "Yan", Gender.FEMALE);
+let passenger03 = new Passenger("010", "B-passport", ReturnTicket.NOT_RETURN, "F104", "Both", "Yan", Gender.FEMALE);
+
+bookingFlight07.addPassenger(passenger01);
+bookingFlight07.addPassenger(passenger02);
+bookingFlight07.addPassenger(passenger03);
+
+let passengers = bookingFlight07.getPassengers();
+console.log(`Number of passengers with booking flight: ${passengers.length}`);
 
 

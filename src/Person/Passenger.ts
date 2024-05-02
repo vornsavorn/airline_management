@@ -3,28 +3,37 @@ import { Seat } from "../Plane/Seat";
 import { Gender } from "./Gender";
 import { Person } from "./Person";
 import { Gate } from "../Airport/Gate";
+import { ReturnTicket } from "../Booking/ReturnTicket";
 
 
 export class Passenger extends Person {
 
     private mealReferences: Meal[];
     private seatNumber: Seat[];
-    private gate : Gate | undefined;
+    private gate: Gate | undefined;
+    private returnTicket: ReturnTicket
 
     constructor(
         private frequentFlyerNumber: string,
-        private passportNumber: string, id: string, firstName: string, lastName: string, gender: Gender
+        private passportNumber: string, 
+        private hasReturnTicket: ReturnTicket,
+        id: string, firstName: string, lastName: string, gender: Gender
     ) {
         super(id, firstName, lastName, gender);
         this.seatNumber = [];
         this.mealReferences = [];
+        this.returnTicket = hasReturnTicket;
     }
-    addGate(gate: Gate){
+
+    addGate(gate: Gate) {
         this.gate = gate;
     }
-    
 
-    getGate(): Gate | undefined{
+    haveReturnTicket(): ReturnTicket {
+        return this.returnTicket;
+    }
+
+    getGate(): Gate | undefined {
         return this.gate;
     }
 
@@ -46,5 +55,9 @@ export class Passenger extends Person {
 
     getPassportNumber(): string {
         return this.passportNumber;
+    }
+
+    getReturnTicket(): ReturnTicket {
+        return this.returnTicket;
     }
 }

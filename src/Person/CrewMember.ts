@@ -15,6 +15,7 @@ export class CrewMember extends Person {
         this.lastName = lastName;
         this.gender = gender;
     }
+    
     getId():string{
         return this.id;
     }
