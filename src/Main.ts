@@ -16,6 +16,22 @@ import { BookingTrip } from "./Booking/BookingTrip";
 import { ReturnTicket } from "./Booking/ReturnTicket";
 
 
+// User story create 2
+// As an airline manager, I want to know for a given flight, how many passengers have return Ticket.
+let bookingTrip = new BookingTrip();
+
+let flight101 = new BookingFlight('ABC123', new Date(), new Date());
+let passenger001 = new Passenger("012", "A-passport", ReturnTicket.NOT_RETURN, "A01", "hor", "lay", Gender.FEMALE);
+let passenger002 = new Passenger("010", "B-passport", ReturnTicket.RETURN, "F104", "Both", "Yan", Gender.FEMALE);
+flight101.addPassenger(passenger002);
+
+bookingTrip.addBookingFlight(flight101);
+
+let flightNumber = 'ABC123';
+let passengersReturnTicketsCount = bookingTrip.getPassengersReturnTickets(flightNumber);
+
+console.log(`Number of passengers with return tickets for flight ${flightNumber}: ${passengersReturnTicketsCount}`);
+
 // User story 3
 // As an airline pilot, I want to know, for a given date, how many flights I have to join.
 let pilot = new AirlinePilot("PF1", "John", "Doe", Gender.MALE, 5000);
@@ -99,7 +115,7 @@ console.log("meal type for the chef need to prepare:");
 console.log(uniqueMealTypes);
 
 
-// User story create 
+// User story create 1
 // As an airline manager, I want to know for a given flight, how many employee working on airline
 let airline001 = new Airline("ABC123");
 
@@ -114,6 +130,8 @@ airline001.addEmployee(employee03);
 let employeeCount = airline001.getEmployeeCount();
 console.log(`Number of employees for ${airline001.getName()}: ${employeeCount} employees`);
 
+// User story create 2
+// As an airline manager, I want to know for a given flight, how many passenger bookingFlight
 let bookingFlight07 = new BookingFlight('FL123', new Date(), new Date());
 
 let passenger01 = new Passenger("012", "A-passport", ReturnTicket.RETURN, "A01", "hor", "lay", Gender.FEMALE);
@@ -128,22 +146,3 @@ let passengers = bookingFlight07.getPassengers();
 console.log(`Number of passengers with booking flight: ${passengers.length}`);
 
 
-
-// Create a BookingTrip object
-let bookingTrip = new BookingTrip();
-
-// Create a BookingFlight object and add passengers
-let flight101 = new BookingFlight('ABC123', new Date(), new Date());
-let passenger001 = new Passenger("012", "A-passport", ReturnTicket.NOT_RETURN, "A01", "hor", "lay", Gender.FEMALE);
-let passenger002 = new Passenger("010", "B-passport", ReturnTicket.RETURN, "F104", "Both", "Yan", Gender.FEMALE);
-flight101.addPassenger(passenger002);
-
-
-// Add the BookingFlight to the BookingTrip
-bookingTrip.addBookingFlight(flight101);
-
-// Get the number of passengers with return tickets for a given flight
-let flightNumber = 'ABC123';
-let passengersReturnTicketsCount = bookingTrip.getPassengersReturnTickets(flightNumber);
-
-console.log(`Number of passengers with return tickets for flight ${flightNumber}: ${passengersReturnTicketsCount}`);
