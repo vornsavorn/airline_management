@@ -22,9 +22,10 @@ import { AirlinePilot } from "./Person/Pilot";
 let pilot = new AirlinePilot("PF1", "John", "Doe", Gender.MALE, 5000);
 
 
-let flight1 = new Flight("ABC123", "Flight 1", 100, new Date('2024-04-30'), new Date('2024-04-30'));
-let flight2 = new Flight("DEF456", "Flight 2", 200, new Date('2024-04-30'), new Date('2024-04-30'));
-let flight3 = new Flight("GHI789", "Flight 3", 150, new Date('2024-05-01'), new Date('2024-05-01'));
+let flight1 = new Flight("ABC123", "Fl001", 100, new Date('2024-04-30'), new Date('2024-04-30'));
+let flight2 = new Flight("DEF456", "FL002", 200, new Date('2024-04-30'), new Date('2024-04-30'));
+let flight3 = new Flight("GHI789", "FL003", 150, new Date('2024-05-01'), new Date('2024-05-01'));
+
 pilot.addFlight(flight1);
 pilot.addFlight(flight2);
 pilot.addFlight(flight3);
@@ -33,9 +34,7 @@ let givenDate = new Date('2024-04-30');
 
 // Output
 let numberOfFlights = pilot.getFlightsForDate(givenDate);
-console.log(pilot);
-console.log(`On ${givenDate.toDateString()}, you have ${numberOfFlights} flights to join.`);
-
+console.log(`On ${givenDate.toDateString()}, you have to join ${numberOfFlights}`);
 
 // // User story 5
 // // As an airline manager, I want to find out how much salary I pay all my employees. |||
