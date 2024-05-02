@@ -5,7 +5,6 @@ import { Airport } from "../Airport/Airport";
 import { Seat } from "../Plane/Seat";
 import { Chef } from "../Person/Chef";
 
-
 export class BookingFlight {
     private departureAirport: Airport | undefined;
     private arrivalAirport: Airport | undefined;
@@ -23,7 +22,6 @@ export class BookingFlight {
         this.flightNumber = flightNumber;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
-        
     }
 
     getFlightNumber(): string {
@@ -64,6 +62,10 @@ export class BookingFlight {
 
     addPassenger(passenger: Passenger): void {
         this.passengers.push(passenger);
+    }
+
+    getPassengers(): Passenger[] {
+        return this.passengers;
     }
 
     setAMealFromBookingFlight(meal: Meal): void {

@@ -3,6 +3,7 @@ import { Route } from "../Airport/Route";
 import { Ticket } from "../Booking/Ticket";
 import { BookingFlight } from "../Booking/BookingFlight";
 import { Gate } from "../Airport/Gate";
+import { Passenger } from "../Person/Passenger";
 
 export class Flight {
     private bookingFlights: BookingFlight[] = [];
@@ -10,8 +11,7 @@ export class Flight {
     private gates: Gate[] = [];
     private pilot: AirlinePilot | undefined;
     private tickets: Ticket[] = [];
-    getMeals: any;
-    addMeal: any;
+    private passengers: Passenger[] = [];
 
     constructor(
         private flightId: string,
@@ -79,5 +79,9 @@ export class Flight {
 
     getFlightFullName(): string {
         return `${this.flightId} and ${this.flightName}`;
+    }
+
+    addPassenger(passenger: Passenger): void {
+        this.passengers.push(passenger);
     }
 }
