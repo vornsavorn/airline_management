@@ -51,3 +51,4 @@ export class Ticket {
         this.passengers.push(passenger);
     }
 }
+

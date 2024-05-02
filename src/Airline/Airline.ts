@@ -10,6 +10,9 @@ export class Airline {
   addEmployee(employee: Employee) {
     this.employees.push(employee);
   }
+  getEmployeeCount(): number {
+    return this.employees.length;
+  }
   
   getName() {
     return this.name;

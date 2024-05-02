@@ -3,6 +3,7 @@ import { Airport } from "./Airport/Airport";
 import { Gate } from "./Airport/Gate";
 import { Route } from "./Airport/Route";
 import { BookingFlight } from "./Booking/BookingFlight";
+import { ReturnTicket } from "./Booking/ReturnTicket";
 import { Meal} from "./Booking/Meal";
 import { MealType } from "./Booking/MealType";
 import { Ticket } from "./Booking/Ticket";
@@ -32,11 +33,12 @@ let givenDate = new Date('2024-04-30');
 
 // Output
 let numberOfFlights = pilot.getFlightsForDate(givenDate);
+console.log(pilot);
 console.log(`On ${givenDate.toDateString()}, you have ${numberOfFlights} flights to join.`);
 
 
-// User story 5
-// As an airline manager, I want to find out how much salary I pay all my employees. |||
+// // User story 5
+// // As an airline manager, I want to find out how much salary I pay all my employees. |||
 let airline = new Airline("C8 Airline");
 
 // Create Gate that passenger waiting to get on the plane
@@ -85,7 +87,7 @@ let bookingFlight = new BookingFlight("ABC123", new Date(), new Date());
 let meal1 = new Meal(MealType.VEGETARIAN, 2, 1000);
 let meal2 = new Meal(MealType.SNACK, 1, 1300);
 let meal3 = new Meal(MealType.TEA, 3, 1000);
-
+ 
 chef.addFlight(bookingFlight);
 
 bookingFlight.setAMealFromBookingFlight(meal1);
@@ -96,3 +98,21 @@ let uniqueMealTypes = chef.getMealTypesFromBookingFlight();
 
 console.log("meal type for the chef need to prepare:");
 console.log(uniqueMealTypes);
+
+
+// User story create 
+// As an airline manager, I want to know for a given flight, how many employee working on airline
+let airline001 = new Airline("ABC123");
+
+let employee01 = new Employee("EY1", "Theun", "En", Gender.MALE, 5000);
+let employee02 = new Employee("EY2", "John", "Doe", Gender.MALE, 6000);
+let employee03 = new Employee("EY3", "Jane", "Smith", Gender.FEMALE, 5500);
+
+airline001.addEmployee(employee01);
+airline001.addEmployee(employee02);
+airline001.addEmployee(employee03);
+
+let employeeCount = airline001.getEmployeeCount();
+console.log(`Number of employees for ${airline001.getName()}: ${employeeCount} employees`);
+
+
