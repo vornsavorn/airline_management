@@ -34,4 +34,11 @@ export class Meal {
     getTotalPrice(): number {
         return this.price * this.quantity;
     }
+
+    printBookingFlightDetails(): void {
+        console.log("Booking Flight Details:");
+        this.bookingFlights.forEach((bookingFlight, index) => {
+            console.log(`Booking Flight ${index + 1}:`, bookingFlight);
+        });
+    }
 }

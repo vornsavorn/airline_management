@@ -7,7 +7,7 @@ export class Employee extends Person{
         firstName: string, 
         lastName: string,  
         gender: Gender, 
-        private salary: number
+        protected salary: number
     ) {
         super(id, firstName, lastName, gender)
         this.salary = salary;

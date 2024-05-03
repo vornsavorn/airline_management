@@ -6,23 +6,26 @@ import { Seat } from "../Plane/Seat";
 import { Chef } from "../Person/Chef";
 
 export class BookingFlight {
-    [x: string]: any;
+  
     private departureAirport: Airport | undefined;
     private arrivalAirport: Airport | undefined;
     private passengers: Passenger[] = [];
     private baggage: Baggage[] = [];
     private meals: Meal[] = [];
-    private seats: Seat[] = [];
     private chefs: Chef | undefined;
 
     constructor(
+        private bookingReferenceNumber: string,
         private flightNumber: string,
         private departureTime: Date,
         private arrivalTime: Date
+        
     ) {
+        this.bookingReferenceNumber = bookingReferenceNumber;
         this.flightNumber = flightNumber;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
+       
     }
 
     getFlightNumber(): string {
@@ -33,36 +36,12 @@ export class BookingFlight {
         return this.departureTime;
     }
 
-    setDepartureTime(departureTime: Date): void {
-        this.departureTime = departureTime;
-    }
-
     getArrivalTime(): Date {
         return this.arrivalTime;
     }
 
-    setArrivalTime(arrivalTime: Date): void {
-        this.arrivalTime = arrivalTime;
-    }
-
-    getDepartureAirport(): Airport | undefined {
-        return this.departureAirport;
-    }
-
-    setDepartureAirport(departureAirport: Airport): void {
-        this.departureAirport = departureAirport;
-    }
-
-    getArrivalAirport(): Airport | undefined {
-        return this.arrivalAirport;
-    }
-
-    setArrivalAirport(arrivalAirport: Airport): void {
-        this.arrivalAirport = arrivalAirport;
-    }
-
-    addPassenger(passenger: Passenger): void {
-        this.passengers.push(passenger);
+    addPassenger(...passenger: Passenger[]): void {
+        this.passengers.push(...passenger);
     }
 
     getPassengers(): Passenger[] {
@@ -77,7 +56,11 @@ export class BookingFlight {
         return this.meals;
     }
 
-    addBaggage( baggage: Baggage): void{
-        this.baggage.push(baggage);
+    addBaggage(...baggage: Baggage[]): void{
+        this.baggage.push(...baggage);
+    }
+
+    getBookingReferenceNumber(): string {
+        return this.bookingReferenceNumber;
     }
 }

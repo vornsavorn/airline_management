@@ -11,14 +11,14 @@ export class Passenger extends Person {
 
     private mealReferences: Meal[];
     private seatNumbers: Seat[];
-    private gate: Gate | undefined;
+    private gates: Gate[] = [];
     private returnTicket: ReturnTicket
     private bookingflights: BookingFlight[];
 
     constructor(
         private frequentFlyerNumber: string,
         private passportNumber: string, 
-        private hasReturnTicket: ReturnTicket,
+        hasReturnTicket: ReturnTicket,
         id: string, firstName: string, lastName: string, gender: Gender
     ) {
         super(id, firstName, lastName, gender);
@@ -28,24 +28,23 @@ export class Passenger extends Person {
         this.bookingflights = [];
     }
 
-    addGate(gate: Gate) {
-        this.gate = gate;
+    addGate(...gate: Gate[]) {
+        this.gates.push(...gate);
     }
 
     haveReturnTicket(): ReturnTicket {
         return this.returnTicket;
     }
 
-    getGate(): Gate | undefined {
-        return this.gate;
+    getGate(): Gate[] {
+        return this.gates;
     }
-    addSeat(seatNumber: Seat): void {
-        this.seatNumbers.push(seatNumber);
+    addSeat(...seatNumber: Seat[]): void {
+        this.seatNumbers.push(...seatNumber);
     }
     
-
-    addSeatNumber(seatNumber: Seat): void {
-        this.seatNumbers.push(seatNumber);
+    addSeatNumber(...seatNumber: Seat[]): void {
+        this.seatNumbers.push(...seatNumber);
     }
 
     addMealReference(mealReference: Meal): void {
@@ -74,6 +73,10 @@ export class Passenger extends Person {
         } else {
             return undefined;
         }
+    }
+
+    getFullName(): string {
+        return `${this.getFirstName()} ${this.getLastName()}`;
     }
     
 }

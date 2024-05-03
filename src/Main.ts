@@ -21,48 +21,55 @@ import { Seat } from "./Plane/Seat";
 // User story 1  
 // As an airport controller, I need to get the full details of a passenger’s trip from their Booking Reference Number (flights, bags, custseat1: Seatomer information…)
 
-// Assuming you have defined all necessary classes and dependencies
+let airport1 = new Airport("JFK", "Manchester Airport");
+let airport2 = new Airport("JFK", "Camboida Airport");
 
-// Create instances for testing
-let airport = new Airport("JFK", "Manchester Airport");
 let passenger101 = new Passenger("FF123", "AB123456", ReturnTicket.RETURN, "P001", "John", "Doe", Gender.FEMALE);
-let passenger102 = new Passenger("FF123", "AB123456", ReturnTicket.RETURN, "P001", "John", "Doe", Gender.FEMALE);
-let bookingFlight1 = new BookingFlight("12324", new Date(), new Date());
 let baggage = new Baggage("B001", 20, passenger101);
-bookingFlight1.addBaggage(baggage);
 let meal = new Meal(MealType.SNACK, 1, 20);
-bookingFlight1.setAMealFromBookingFlight(meal);
-let flight01 = new BookingFlight("ABC123", new Date(), new Date());
-let flight02 = new BookingFlight("DEF456", new Date(), new Date());
-let seat1 = new Seat("F001", true, true);
+let bookingFlight1 = new BookingFlight("BKR103", "FL80", new Date(), new Date());
+
+let flight201 = new BookingFlight("BKR101", "ABC123", new Date(), new Date());
+let flight202 = new BookingFlight("BKR102", "DEF456", new Date(), new Date());
+let route = new Route(new Date("2024-04-29"), new Date('2024-04-30'), airport1, airport2, "2 hours");
+
+let seat1 = new Seat("F001", true, false);
 let seat2 = new Seat("F002", true, true);
 
-seat1.bookSeat(flight01);
-seat2.bookSeat(flight02);
+let bookingTrip = new BookingTrip();
+
+bookingFlight1.setAMealFromBookingFlight(meal);
+bookingFlight1.addBaggage(baggage);
+airport2.addBooking(bookingFlight1);
+
+seat1.bookSeat(flight201);
+seat2.bookSeat(flight202);
 seat1.cancelBooking();
 
 passenger101.addSeat(seat1);
 
 bookingFlight1.addPassenger(passenger101);
-
-let bookingTrip = new BookingTrip();
 bookingTrip.addBookingFlight(bookingFlight1);
+airport2.addBooking(bookingFlight1);
 
-airport.addBooking(bookingFlight1);
-let bookingReferenceNumber = passenger101.getBookingReferenceNumber();
+// Displaying information
+console.log("Baggage Passenger:", baggage.getPassenger());
+console.log("Passenger 101:", passenger101);
+console.log("Booking Trip:", bookingTrip);
+console.log("Booking Flight 1:", bookingFlight1);
 
-// Output
-// console.log("Passenger 101:", passenger101);
-// console.log("Booking Trip:", bookingTrip);
-// console.log("Booking Flight 1:", bookingFlight1);
-// console.log("Booking Reference Number:", bookingReferenceNumber);
+// Displaying route information
+console.log("Origin:", route.getOriginAirport().getName());
+console.log("Destination:", route.getDestinationAirport().getName());
+console.log("Duration:", route.getDuration());
+
 
 
 // User story create 2
 // As an airline manager, I want to know for a given flight, how many passengers have return Ticket.
 let bookingTrip1 = new BookingTrip();
 
-let flight101 = new BookingFlight('ABC123', new Date(), new Date());
+let flight101 = new BookingFlight("BKR104", 'ABC123', new Date(), new Date());
 let passenger001 = new Passenger("012", "A-passport", ReturnTicket.NOT_RETURN, "A01", "hor", "lay", Gender.FEMALE);
 let passenger002 = new Passenger("010", "B-passport", ReturnTicket.RETURN, "F104", "Both", "Yan", Gender.FEMALE);
 flight101.addPassenger(passenger002);
@@ -72,7 +79,7 @@ bookingTrip1.addBookingFlight(flight101);
 let flightNumber = 'ABC123';
 let passengersReturnTicketsCount = bookingTrip1.getPassengersReturnTickets(flightNumber);
 // Output
-console.log(`Number of passengers with return tickets for flight ${flightNumber}: ${passengersReturnTicketsCount}`);
+// console.log(`Number of passengers with return tickets for flight ${flightNumber}: ${passengersReturnTicketsCount}`);
 
 
 // User story 3
@@ -138,9 +145,9 @@ let totalSalary = airline.getSalary();
 
 // User story 4 
 // As an airline chef, I need to know, for a given flight, how many of each meal type I need to prepare.
-let chef = new Chef("123", "John", "Doe", Gender.MALE);
+let chef = new Chef("123", "John", "Doe", Gender.MALE, 1000);
 
-let bookingFlight = new BookingFlight("ABC123", new Date(), new Date());
+let bookingFlight = new BookingFlight("BKR105", "ABC123", new Date(), new Date());
 
 let meal1 = new Meal(MealType.VEGETARIAN, 2, 1000);
 let meal2 = new Meal(MealType.SNACK, 1, 1300);
@@ -175,11 +182,11 @@ let employeeCount = airline001.getEmployeeCount();
 
 // User story create 2
 // As an airline manager, I want to know for a given flight, how many passenger bookingFlight
-let bookingFlight07 = new BookingFlight('FL123', new Date(), new Date());
+let bookingFlight07 = new BookingFlight("BKR106", 'FL123', new Date(), new Date());
 
-let passenger01 = new Passenger("012", "A-passport", ReturnTicket.RETURN, "A01", "hor", "lay", Gender.FEMALE);
-let passenger02 = new Passenger("010", "B-passport", ReturnTicket.RETURN, "F104", "Both", "Yan", Gender.FEMALE);
-let passenger03 = new Passenger("010", "B-passport", ReturnTicket.NOT_RETURN, "F104", "Both", "Yan", Gender.FEMALE);
+let passenger01 = new Passenger("011", "A-passport", ReturnTicket.RETURN, "A01", "hor", "lay", Gender.FEMALE);
+let passenger02 = new Passenger("012", "B-passport", ReturnTicket.RETURN, "F104", "Both", "Savorn", Gender.FEMALE);
+let passenger03 = new Passenger("013", "C-passport", ReturnTicket.NOT_RETURN, "F104", "Thary", "Yan", Gender.FEMALE);
 
 bookingFlight07.addPassenger(passenger01);
 bookingFlight07.addPassenger(passenger02);
@@ -188,5 +195,3 @@ bookingFlight07.addPassenger(passenger03);
 let passengers = bookingFlight07.getPassengers();
 // Output
 // console.log(`Number of passengers with booking flight: ${passengers.length}`);
-
-

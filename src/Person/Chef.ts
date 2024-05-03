@@ -1,18 +1,20 @@
 import { BookingFlight } from "../Booking/BookingFlight";
 import { Meal } from "../Booking/Meal";
+import { Employee } from "./Employee";
 import { Gender } from "./Gender";
 import { Person } from "./Person";
 
-export class Chef extends Person {
+export class Chef extends Employee {
     private bookingFlights: BookingFlight[];
 
     constructor(
         id: string,
         firstName: string,
         lastName: string,
-        gender: Gender
+        gender: Gender,
+        salary: number
     ) {
-        super(id, firstName, lastName, gender);
+        super(id, firstName, lastName, gender, salary);
         this.bookingFlights = [];
     }
 

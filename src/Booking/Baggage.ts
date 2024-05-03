@@ -14,7 +14,10 @@ export class Baggage {
     addFlight(flight: Flight) {
         this.flights.push(flight);
     }
-    getFlights(): Flight[] {
+    setFlight(flight: Flight[]) {
+        this.flights = flight;
+    }
+    getFlight(): Flight[] {
         return this.flights;
     }
     getPassenger(): Passenger {

@@ -3,7 +3,7 @@ import { Gender } from "./Gender";
 import { Person } from "./Person";
 import { Flight } from "../Flight/Flight";
 
-export class AirlinePilot extends Person {
+export class AirlinePilot extends Employee {
     private flights: Flight[];
 
     constructor(
@@ -11,9 +11,9 @@ export class AirlinePilot extends Person {
         firstName: string,
         lastName: string,
         gender: Gender,
-        private salary: number
+        salary: number
     ) {
-        super(id, firstName, lastName, gender);
+        super(id, firstName, lastName, gender, salary);
         this.flights = [];
     }
 
@@ -34,7 +34,4 @@ export class AirlinePilot extends Person {
         return flightsForDate;
     }
 
-    getSalary(): number {
-        return this.salary;
-    }
 }
