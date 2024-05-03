@@ -4,14 +4,16 @@ import { Gender } from "./Gender";
 import { Person } from "./Person";
 import { Gate } from "../Airport/Gate";
 import { ReturnTicket } from "../Booking/ReturnTicket";
+import { BookingFlight } from "../Booking/BookingFlight";
 
 
 export class Passenger extends Person {
 
     private mealReferences: Meal[];
-    private seatNumber: Seat[];
+    private seatNumbers: Seat[];
     private gate: Gate | undefined;
     private returnTicket: ReturnTicket
+    private bookingflights: BookingFlight[];
 
     constructor(
         private frequentFlyerNumber: string,
@@ -20,9 +22,10 @@ export class Passenger extends Person {
         id: string, firstName: string, lastName: string, gender: Gender
     ) {
         super(id, firstName, lastName, gender);
-        this.seatNumber = [];
+        this.seatNumbers = [];
         this.mealReferences = [];
         this.returnTicket = hasReturnTicket;
+        this.bookingflights = [];
     }
 
     addGate(gate: Gate) {
@@ -36,13 +39,13 @@ export class Passenger extends Person {
     getGate(): Gate | undefined {
         return this.gate;
     }
-
-    getSeatNumber(): Seat[] {
-        return this.seatNumber;
+    addSeat(seatNumber: Seat): void {
+        this.seatNumbers.push(seatNumber);
     }
+    
 
     addSeatNumber(seatNumber: Seat): void {
-        this.seatNumber.push(seatNumber);
+        this.seatNumbers.push(seatNumber);
     }
 
     addMealReference(mealReference: Meal): void {
@@ -60,4 +63,17 @@ export class Passenger extends Person {
     getReturnTicket(): ReturnTicket {
         return this.returnTicket;
     }
+
+    getBookingFlights(): BookingFlight[] {
+        return this.bookingflights;
+    }
+
+    getBookingReferenceNumber(): string | undefined {
+        if (this.bookingflights && this.bookingflights.length > 0) {
+            return this.bookingflights[0].getBookingReferenceNumber();
+        } else {
+            return undefined;
+        }
+    }
+    
 }

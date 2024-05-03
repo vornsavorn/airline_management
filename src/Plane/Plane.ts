@@ -15,16 +15,6 @@ export class Plane {
         this.planeName = planeName;
         this.planeNumber = planeNumber;
     }
-
-    addSeat(seat: Seat) {
-        this.seats.push(seat);
-    }
-    getSeats(){
-        return this.seats;
-    }
-    getPlaneName(){
-        return this.planeName;
-    }
     getPlaneNumber(){
         return this.planeNumber;
     }

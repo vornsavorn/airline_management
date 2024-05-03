@@ -3,15 +3,14 @@ import { Passenger } from "../Person/Passenger";
 
 export class Baggage {
     private flights: Flight[];
-    private passenger: Passenger;
     constructor (
         private tagNumber: string,
-        private weight: number
+        private weight: number,
+        private passengers: Passenger 
     ) {
-        this.tagNumber = tagNumber;
-        this.weight = weight;
         this.flights = [];
     }
+    
     addFlight(flight: Flight) {
         this.flights.push(flight);
     }
@@ -19,16 +18,7 @@ export class Baggage {
         return this.flights;
     }
     getPassenger(): Passenger {
-        return this.passenger;
-    }
-    setPassenger(passenger: Passenger) {
-        this.passenger = passenger;
-    }
-    getTagNumber(): string {
-        return this.tagNumber;
-    }
-    getWeight(): number {
-        return this.weight;
+        return this.passengers;
     }
     
 }

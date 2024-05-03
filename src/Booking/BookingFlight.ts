@@ -6,6 +6,7 @@ import { Seat } from "../Plane/Seat";
 import { Chef } from "../Person/Chef";
 
 export class BookingFlight {
+    [x: string]: any;
     private departureAirport: Airport | undefined;
     private arrivalAirport: Airport | undefined;
     private passengers: Passenger[] = [];
@@ -74,5 +75,9 @@ export class BookingFlight {
 
     getMealsFromBookingFlight(): Meal[] {
         return this.meals;
+    }
+
+    addBaggage( baggage: Baggage): void{
+        this.baggage.push(baggage);
     }
 }

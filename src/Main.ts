@@ -14,23 +14,66 @@ import { Passenger } from "./Person/Passenger";
 import { AirlinePilot } from "./Person/Pilot";
 import { BookingTrip } from "./Booking/BookingTrip";
 import { ReturnTicket } from "./Booking/ReturnTicket";
+import { Baggage } from "./Booking/Baggage";
+import { Seat } from "./Plane/Seat";
+
+
+// User story 1  
+// As an airport controller, I need to get the full details of a passenger’s trip from their Booking Reference Number (flights, bags, custseat1: Seatomer information…)
+
+// Assuming you have defined all necessary classes and dependencies
+
+// Create instances for testing
+let airport = new Airport("JFK", "Manchester Airport");
+let passenger101 = new Passenger("FF123", "AB123456", ReturnTicket.RETURN, "P001", "John", "Doe", Gender.FEMALE);
+let passenger102 = new Passenger("FF123", "AB123456", ReturnTicket.RETURN, "P001", "John", "Doe", Gender.FEMALE);
+let bookingFlight1 = new BookingFlight("12324", new Date(), new Date());
+let baggage = new Baggage("B001", 20, passenger101);
+bookingFlight1.addBaggage(baggage);
+let meal = new Meal(MealType.SNACK, 1, 20);
+bookingFlight1.setAMealFromBookingFlight(meal);
+let flight01 = new BookingFlight("ABC123", new Date(), new Date());
+let flight02 = new BookingFlight("DEF456", new Date(), new Date());
+let seat1 = new Seat("F001", true, true);
+let seat2 = new Seat("F002", true, true);
+
+seat1.bookSeat(flight01);
+seat2.bookSeat(flight02);
+seat1.cancelBooking();
+
+passenger101.addSeat(seat1);
+
+bookingFlight1.addPassenger(passenger101);
+
+let bookingTrip = new BookingTrip();
+bookingTrip.addBookingFlight(bookingFlight1);
+
+airport.addBooking(bookingFlight1);
+let bookingReferenceNumber = passenger101.getBookingReferenceNumber();
+
+// Output
+// console.log("Passenger 101:", passenger101);
+// console.log("Booking Trip:", bookingTrip);
+// console.log("Booking Flight 1:", bookingFlight1);
+// console.log("Booking Reference Number:", bookingReferenceNumber);
 
 
 // User story create 2
 // As an airline manager, I want to know for a given flight, how many passengers have return Ticket.
-let bookingTrip = new BookingTrip();
+let bookingTrip1 = new BookingTrip();
 
 let flight101 = new BookingFlight('ABC123', new Date(), new Date());
 let passenger001 = new Passenger("012", "A-passport", ReturnTicket.NOT_RETURN, "A01", "hor", "lay", Gender.FEMALE);
 let passenger002 = new Passenger("010", "B-passport", ReturnTicket.RETURN, "F104", "Both", "Yan", Gender.FEMALE);
 flight101.addPassenger(passenger002);
 
-bookingTrip.addBookingFlight(flight101);
+bookingTrip1.addBookingFlight(flight101);
 
 let flightNumber = 'ABC123';
-let passengersReturnTicketsCount = bookingTrip.getPassengersReturnTickets(flightNumber);
-
+let passengersReturnTicketsCount = bookingTrip1.getPassengersReturnTickets(flightNumber);
+// Output
 console.log(`Number of passengers with return tickets for flight ${flightNumber}: ${passengersReturnTicketsCount}`);
+
 
 // User story 3
 // As an airline pilot, I want to know, for a given date, how many flights I have to join.
@@ -47,9 +90,10 @@ pilot.addFlight(flight3);
 
 let givenDate = new Date('2024-04-30');
 
-// Output
 let numberOfFlights = pilot.getFlightsForDate(givenDate);
-console.log(`On ${givenDate.toDateString()}, you have to join ${numberOfFlights}`);
+// Output
+// console.log(`On ${givenDate.toDateString()}, you have to join ${numberOfFlights}`);
+
 
 // // User story 5
 // // As an airline manager, I want to find out how much salary I pay all my employees. |||
@@ -69,15 +113,14 @@ passenger1.addGate(gate1);
 passenger2.addGate(gate3);
 // console.log(passenger1);
 
-let passengerGate = passenger1.getGate();
-if (passengerGate) {
-    let gateCode = passengerGate.getGateCode();
-    console.log(`So the passenger is waiting at gateCode: ${gateCode}.`);
-} else {
-    console.log("Your plane's gate has not been assigned yet.");
-}
+// let passengerGate = passenger1.getGate();
+// if (passengerGate) {
+//     let gateCode = passengerGate.getGateCode();
+//     console.log(`So the passenger is waiting at gateCode: ${gateCode}.`);
+// } else {
+//     console.log("Your plane's gate has not been assigned yet.");
+// }
 
-// Create employees and add them to the airline
 let employee1 = new Employee("EY1", "Theun", "En", Gender.MALE, 5000);
 let employee2 = new Employee("EY2", "Savorn", "Vorn", Gender.FEMALE, 6000);
 let employee3 = new Employee("EY3", "Thary", "Oeun", Gender.FEMALE, 5500);
@@ -88,9 +131,9 @@ airline.addEmployee(employee2);
 airline.addEmployee(employee3);
 airline.addEmployee(employee4);
 
-// Output
 let totalSalary = airline.getSalary();
-console.log(`The total salary paid to all employees of ${airline.getName()} is: $${totalSalary}`);
+// Output
+// console.log(`The total salary paid to all employees of ${airline.getName()} is: $${totalSalary}`);
 
 
 // User story 4 
@@ -110,9 +153,8 @@ bookingFlight.setAMealFromBookingFlight(meal2);
 bookingFlight.setAMealFromBookingFlight(meal3);
 
 let uniqueMealTypes = chef.getMealTypesFromBookingFlight();
-
-console.log("meal type for the chef need to prepare:");
-console.log(uniqueMealTypes);
+// Output
+// console.log("meal type for the chef need to prepare:", uniqueMealTypes);
 
 
 // User story create 1
@@ -128,7 +170,8 @@ airline001.addEmployee(employee02);
 airline001.addEmployee(employee03);
 
 let employeeCount = airline001.getEmployeeCount();
-console.log(`Number of employees for ${airline001.getName()}: ${employeeCount} employees`);
+// Output
+// console.log(`Number of employees for ${airline001.getName()}: ${employeeCount} employees`);
 
 // User story create 2
 // As an airline manager, I want to know for a given flight, how many passenger bookingFlight
@@ -143,6 +186,7 @@ bookingFlight07.addPassenger(passenger02);
 bookingFlight07.addPassenger(passenger03);
 
 let passengers = bookingFlight07.getPassengers();
-console.log(`Number of passengers with booking flight: ${passengers.length}`);
+// Output
+// console.log(`Number of passengers with booking flight: ${passengers.length}`);
 
 

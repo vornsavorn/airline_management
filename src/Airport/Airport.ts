@@ -4,6 +4,7 @@ import {Gate} from './Gate';
 import { Route } from './Route';
 import { Flight } from '../Flight/Flight';
 import { Passenger } from '../Person/Passenger';
+import { BookingFlight } from '../Booking/BookingFlight';
 
 
 export class Airport {
@@ -13,6 +14,7 @@ export class Airport {
     private Route: Route[] = [];
     private flights:Flight[] = [];
     private passengers:Passenger[] = [];
+    private bookingFlights: BookingFlight[] = [];
     constructor (
         private code: string,
         private name: string 
@@ -39,6 +41,9 @@ export class Airport {
     addRoutes(routes:Route): void {
         this.Route.push(routes);
     }
-   
 
+    addBooking(booking:BookingFlight): void {
+        this.bookingFlights.push(booking);
+    }
+   
 }
